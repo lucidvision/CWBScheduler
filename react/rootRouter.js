@@ -13,8 +13,8 @@ import Materials from './components/materials/materialsContainer';
 export default class RootRouter extends Component {
   render() {
     return <Router>
-      <Scene key="root">
-        <Scene key="login" component={Login} title="Login" />
+      <Scene key="root" >
+        <Scene key="login" component={Login} initial={true} hideNavBar={true} />
         <Scene key="projects" component={Projects} title="Projects" />
         <Scene key="schedule" component={Schedule} title="Schedule" />
         <Scene key="history" component={History} title="History" />
