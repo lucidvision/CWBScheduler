@@ -2,28 +2,54 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { ScrollView,  } from 'react-native';
-import style from '../shared/style.js';
-import projectsStyle from './projectsStyle.js';
+import { View, ScrollView  } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import style from '../shared/style.js';
+import ProjectsStyle from './projectsStyle';
+import ProjectsList from './projectsList';
 
 export default class ProjectsContainer extends Component {
   constructor(props) {
     super(props);
 
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows([]),
       projects: [],
-      selected: [],
+      selected: []
     }
+  }
+
+  componentWillMount() {
+    this.populateProjectList();
   }
 
   render() {
     return(
-      <ScrollView>
-        
-      </ScrollView>
+      <View>
+        <ProjectsList projects={this.state.projects} selected={this.state.selected} />
+      </View>
     );
+  }
+
+  populateProjectList() {
+    const dummyProjects = [
+      {
+        id: 1,
+        title: 'Batman Returns',
+        director: 'Jeff Rose',
+        phone: '777-7777',
+        actions: 3,
+      },
+      {
+        id: 2,
+        title: 'Star Trek',
+        director: 'Susan Fox',
+        phone: '888-8888',
+        actions: 2,
+      }
+    ]
+
+    this.setState({
+      projects: dummyProjects
+    })
   }
 }

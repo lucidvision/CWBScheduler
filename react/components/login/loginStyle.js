@@ -3,7 +3,7 @@
 
 import { StyleSheet } from 'react-native';
 
-const loginStyle = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -36,7 +36,5 @@ const loginStyle = StyleSheet.create({
     padding: 12,
     paddingLeft: 20,
     paddingRight: 20,
-  }
-})
-
-module.exports = loginStyle;
+  },
+});
